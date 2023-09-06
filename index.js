@@ -1,0 +1,20 @@
+// Imports database config
+require('./src/config/database.config')
+
+const express = require('express');
+const ap1Version1 = require('./src/config/versioning/v1')
+const envConfig = require('./src/config/env/index')
+
+const app = express();
+
+app.use(express.json())
+
+const PORT = envConfig.APP_PORT || 7006;
+
+app.listen(PORT, () => {
+    console.log(`Applicaion running on por ${PORT}`)
+})
+
+app.use('/api/v1', ap1Version1);
+
+module.exports = app;
