@@ -12,7 +12,7 @@ const addUser = `
 `;
 
 const findUserByEmail = `
- SELECT name, email, role FROM users WHERE email=$1
+ SELECT id, name, email, role, password FROM users WHERE email=$1
 `
 
 module.exports = {

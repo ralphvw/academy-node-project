@@ -16,6 +16,23 @@ const createUser = async (req, res, next) => {
     }
 }
 
+/**
+ * Controller for login user
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ * @returns 
+ */
+const signInUser = async (req, res, next) => {
+    try {
+        const result = await UserService.loginUser(req.body);
+        return res.status(result.code).json(result);
+    } catch (error) {
+        next(error)
+    }
+}
+
 module.exports = {
-    createUser
+    createUser,
+    signInUser
 }
