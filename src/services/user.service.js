@@ -39,7 +39,6 @@ const loginUser = async (body) => {
 
     // Check if that user exists inside the db
     const user = await runQuery(findUserByEmail, [email]);
-    console.log(user);
     if (user.length === 0) {
         throw {
             code: 404,
@@ -61,13 +60,17 @@ const loginUser = async (body) => {
         }
     }
 
+    const options = {
+        'expiresIn': '1d'
+    }
+
     // Generate token for authentication purposes
     const token = jwt.sign({
         id,
         name,
         email,
         role
-    }, config.JWT_SECRET_KEY);
+    }, config.JWT_SECRET_KEY, options);
     return {
         status: 'success',
         message: 'User login successfully',
