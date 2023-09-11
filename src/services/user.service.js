@@ -39,6 +39,14 @@ const loginUser = async (body) => {
 
     // Check if that user exists inside the db
     const user = await runQuery(findUserByEmail, [email]);
+    /*
+    user = {
+        password,
+        role,
+        name,
+        id
+    }
+    */
     if (user.length === 0) {
         throw {
             code: 404,
@@ -49,7 +57,6 @@ const loginUser = async (body) => {
     }
     // Compare user passwords
     const { password: dbPassword, role, name, id } = user[0];
-    console.log(user[0])
     const userPassword = bcrypt.compareSync(password, dbPassword); // Boolean true/false
     if (!userPassword) {
         throw {

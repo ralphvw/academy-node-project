@@ -16,6 +16,13 @@ const verifyToken = async (req, res, next) => {
         }
 
         const decoded = jwt.verify(token, config.JWT_SECRET_KEY);
+        /*const decoded = {
+            id: 2,
+            name: 'Sylvia',
+            email: 'sylvia@mail.com'
+            role: 'admin'
+        }
+        */
         const { email } = decoded;
         const user = await runQuery(findUserByEmail, [email]);
         if (user.length === 0) {
@@ -37,5 +44,7 @@ const verifyToken = async (req, res, next) => {
 module.exports =  {
     verifyToken
 }
+
+
 
 

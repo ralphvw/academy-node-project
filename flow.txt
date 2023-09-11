@@ -1,0 +1,14 @@
+/**
+ * First initialize project
+ * npm init -y
+ * Set up your database config and your envs
+ * - Migrations
+ * Set up your routes
+ * - Query 
+ * - Service (talk to your database)
+ * - Controller (pass data from service)
+ * Routes
+ * Call path and then request method(POST, GET, PATCH, PUT, DELETE)
+ * Create middlewares
+ * Add them to your route
+ */
